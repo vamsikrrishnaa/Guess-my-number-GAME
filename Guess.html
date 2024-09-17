@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the number!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div>
+        <div class="popup_bg">
+            <div class="popup">
+                <span id="popupText"></span>
+                <button class="OKbtn"
+                    style="height: 6vh;width: 18vh;background-color: rgb(6, 161, 6);border-radius: 8px ;border-color: green;border-style: none;font-size: 5vh;">
+                    OK!</button>
+            </div>
+        </div>
+    </div>
+    <div class="overlay"></div>
+    <header>
+        <nav class="nav">Guess My Number!</nav>
+    </header>
+    <main>
+        <div class="middle">
+            <div
+                style="display: flex; flex-direction: row; width: 100%; align-items: center; justify-content: space-between;">
+                <input type="reset" class="playagain_btn " value="Play again!">
+                <div
+                    style="display: flex;flex-direction: column;height: 5vh;align-items: center;justify-content: space-evenly;">
+                    <div class="input">
+                        <!-- <input class="min" type="number" placeholder="0" min="-500" max="500">
+                    <span>between</span>
+                    <input class="max" type="number" placeholder="0" min="-500" max="500"> -->
+                        <button class="range1 rgbtn">1-20</button>
+                        <button class="range2 rgbtn">1-50</button>
+                        <button class="range3 rgbtn">1-100</button>
+                    </div>
+                    <span class="rangeText"></span>
+                </div>
+            </div>
+            <div class="entered">?</div>
+            <div class="texty" style="font-size:4vh;">Start guessing.</div>
+            <div style="display: flex;flex-direction: row;width: 100%; height: 20vh;">
+                <div class="guess-section">
+                    <input class="check_box" type="number" placeholder="?" required>
+                    <button class="check_btn">Check!</button>
+                </div>
+                <div class="scoreboard">
+                    <span class="texty2">Let's Start</span>
+                    <span class="score">Score: 5 (You have a '5' bonus.)</span>
+                    <span class="highscore"></span>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="javaS.js">
+    </script>
+</body>
+
+</html>2

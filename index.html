@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the number!</title>
+    <style>
+
+
+
+        @import url('https://fonts.googleapis.com/css2?family=Jersey+10&display=swap');
+
+        body {
+            background-color: rgb(33, 32, 32);
+            margin: 0;
+            padding: 0;
+            font-family: "Jersey 10", sans-serif;
+            color: beige;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(33, 32, 32);
+            color: beige;
+            height: 10vh;
+            width: 100%;
+            box-shadow: 0.5vh 0.5vh 1vh 1vh blue;
+        }
+
+        .nav {
+
+            font-size: 7vh;
+            background-color: rgba(0, 0, 0, 0);
+            transition: font-size 1.5s 0s;
+        }
+
+        .nav:hover {
+            font-size: 10vh;
+            text-shadow: 2px 2px blue;
+        }
+
+        main {
+            height: 89vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .middle {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            height: 80vh;
+            width: 70%;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 2vh;
+            border: 2px solid white;
+            border-radius: 5vh;
+        }
+
+        .check_btn {
+            height: 8vh;
+            width: 20vh;
+            font-size: 3.5vh;
+            background-color: blue;
+            color: beige;
+            cursor: pointer;
+            border: none;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .check_btn:active {
+            transform: scale(1.1);
+            background-color: darkblue;
+        }
+
+        input[type=number] {
+            height: 4.5vh;
+            width: 4vh;
+            background-color: rgba(0, 0, 255, 0.885);
+            color: beige;
+            text-align: center;
+            margin: 0 1vh;
+            border: none;
+            outline: none;
+        }
+
+        .input {
+            display: flex;
+            align-items: center;
+        }
+
+        .input span {
+            font-size: 3vh;
+            margin: 0 1vh;
+        }
+
+        .entered {
+            height: 15vh;
+            width: 15vh;
+            border: 2px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 255, 0.522);
+            font-size: 10vh;
+        }
+
+        .scoreboard {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 3vh;
+        }
+
+        .scoreboard span {
+            margin: 1vh 0;
+        }
+
+        .scoreboard span.highscore {
+            color: gold;
+        }
+
+        .guess-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 60%;
+            align-items: center;
+        }
+
+        .guess-section input[type=number] {
+            height: 6vh;
+            width: 10vh;
+            background-color: rgba(0, 0, 255, 0.885);
+            color: beige;
+            text-align: center;
+            margin: 0 1vh;
+            border: 2px solid white;
+            font-size: 3vh;
+        }
+
+        .playagain_btn {
+            height: 8vh;
+            width: 20vh;
+            font-size: 3.5vh;
+            background-color: blue;
+            color: beige;
+            cursor: pointer;
+            border: none;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .playagain_btn:active {
+            transform: scale(1.1);
+            background-color: darkblue;
+        }
+
+        .overlay {
+            height: 100%;
+            width: 100%;
+            background-color: white;
+            filter: blur(50%);
+        }
+
+        .main {
+            background-image: url('/hanu.png');
+            background-position: center;
+        }
+
+
+        .popup {
+            height: 25vh;
+            width: 50vh;
+            border-color: red;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            background-color: white;
+            border-radius: 3vh;
+            color: black;
+            font-family: "Jersey 10", sans-serif;
+            font-size: 5vh;
+            flex-direction: column;
+            color: rgb(6, 161, 6);
+            border: 5px solid black;
+            box-shadow: 1px 0px 9px 2px green;
+
+        }
+
+        .OKbtn {
+            font-family: "Jersey 10", sans-serif;
+            cursor: pointer;
+            height: 6vh;
+            width: 18vh;
+            background-color: rgb(6, 161, 6);
+            border-radius: 8px;
+            border: none;
+            font-size: 5vh;
+            color: white;
+            display: block;
+            /* Ensure it is set to display block */
+
+        }
+
+        .popup_bg {
+            display: none;
+            height: 100vh;
+            width: 100vw;
+            background-color: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            transition: visibility 0s, opacity 0.5s;
+        }
+
+        .rgbtn {
+            height: 5vh;
+            width: 10vh;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-color: rgba(0, 0, 0, 0.6);
+            border-style: groove;
+            margin: 1vh;
+            color: blue;
+            cursor: pointer;
+        }
+
+
+        .rangeText {
+            font-family: "Jersey 10", sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="popup_bg">
+            <div class="popup">
+                <span id="popupText"></span>
+                <button class="OKbtn"
+                    style="height: 6vh;width: 18vh;background-color: rgb(6, 161, 6);border-radius: 8px ;border-color: green;border-style: none;font-size: 5vh;">
+                    OK!</button>
+            </div>
+        </div>
+    </div>
+    <div class="overlay"></div>
+    <header>
+        <nav class="nav">Guess My Number!</nav>
+    </header>
+    <main>
+        <div class="middle">
+            <div
+                style="display: flex; flex-direction: row; width: 100%; align-items: center; justify-content: space-between;">
+                <input type="reset" class="playagain_btn " value="Play again!">
+                <div
+                    style="display: flex;flex-direction: column;height: 5vh;align-items: center;justify-content: space-evenly;">
+                    <div class="input">
+                        <!-- <input class="min" type="number" placeholder="0" min="-500" max="500">
+                    <span>between</span>
+                    <input class="max" type="number" placeholder="0" min="-500" max="500"> -->
+                        <button class="range1 rgbtn">1-20</button>
+                        <button class="range2 rgbtn">1-50</button>
+                        <button class="range3 rgbtn">1-100</button>
+                    </div>
+                    <span class="rangeText"></span>
+                </div>
+            </div>
+            <div class="entered">?</div>
+            <div class="texty" style="font-size:4vh;">Start guessing.</div>
+            <div style="display: flex;flex-direction: row;width: 100%; height: 20vh;">
+                <div class="guess-section">
+                    <input class="check_box" type="number" placeholder="?" required>
+                    <button class="check_btn">Check!</button>
+                </div>
+                <div class="scoreboard">
+                    <span class="texty2">Let's Start</span>
+                    <span class="score">Score: 5 (You have a '5' bonus.)</span>
+                    <span class="highscore"></span>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="javaS.js">
+
+    </script>
+</body>
+
+</html>
